@@ -5,82 +5,53 @@ namespace App\Http\Controllers\API;
 use App\Platform;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PlatformResource;
+use App\Http\Requests\StorePlatform;
+use App\Http\Requests\UpdatePlatform;
 
-class PlatformController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+class PlatformController extends Controller {
+  
+  public function index() {
+    $platforms = Platform::all();
+    return PlatformResource::collection( $platforms );
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create() {
+    return view('platforms.create');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(StorePlatform $request) {
+    
+    $platform = Platform::create([
+      'name'        => $request->name,
+      'description' => $request->description,
+      'icon'        => $request->icon
+    ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Platform  $platform
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Platform $platform)
-    {
-        //
-    }
+    return new PlatformResource( $platform );
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Platform  $platform
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Platform $platform)
-    {
-        //
-    }
+  public function show(Platform $platform) {
+    return new PlatformResource( $platform );
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Platform  $platform
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Platform $platform)
-    {
-        //
-    }
+  public function edit(Platform $platform) {
+    return view('platforms.edit', ['platform' => $platform]);
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Platform  $platform
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Platform $platform)
-    {
-        //
-    }
+  public function update(UpdatePlatform $request, Platform $platform) {
+    
+    $platform->update([
+      'name'        => $request->name,
+      'description' => $request->email,
+      'icon'        => $request->phone_number
+    ]);
+
+    return new PlatformResource( $platform );
+  }
+
+  public function destroy(Platform $platform) {
+    $platform->delete();
+  }
+  
 }
