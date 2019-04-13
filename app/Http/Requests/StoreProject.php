@@ -4,27 +4,24 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProject extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
+class StoreProject extends FormRequest {
+  
+  public function authorize() {
+      return true;
+  }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            //
-        ];
-    }
+  public function rules() {
+    return [
+      'name'                 => 'required|string|max:191',
+      'description'          => 'nullable|text|max:300',
+      'start_date'           => 'required|date',
+      'end_date'             => 'required|date',
+      'budget'               => 'required|integer',
+      'client_id'             => 'required|integer',
+      'platform_id'           => 'required|integer',
+      'development_status_id' => 'required|integer',
+      'payment_method_id'     => 'required|integer'
+    ];
+  }
+  
 }
