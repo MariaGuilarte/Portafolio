@@ -21,11 +21,13 @@ Route::post('clients/{client}', 'API\ClientController@update');
 Route::post('platforms/{platform}', 'API\PlatformController@update');
 Route::post('developmentStatuses/{developmentStatus}', 'API\DevelopmentStatusController@update');
 Route::post('paymentMethods/{paymentMethod}', 'API\PaymentMethodController@update');
+Route::post('projects/{project}', 'API\ProjectController@update');
 
 Route::resources(
   [
     'clients'             => 'API\ClientController',
     'platforms'           => 'API\PlatformController',
     'developmentStatuses' => 'API\DevelopmentStatusesController',
-    'paymentMethods'      => 'API\PaymentMethodController'
+    'paymentMethods'      => 'API\PaymentMethodController',
+    'projects'            => 'API\ProjectController'
   ]);
