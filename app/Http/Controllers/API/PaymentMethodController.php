@@ -5,82 +5,53 @@ namespace App\Http\Controllers\API;
 use App\PaymentMethod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PaymentMethodResource;
+use App\Http\Requests\StorePaymentMethod;
+use App\Http\Requests\UpdatePaymentMethod;
 
-class PaymentMethodController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+class PaymentMethodController extends Controller {
+  
+  public function index() {
+    $paymentMethods = PaymentMethod::all();
+    return PaymentMethodResource::collection( $paymentMethods );
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create() {
+    return view('paymentMethods.create');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(StorePaymentMethod $request) {
+    
+    $paymentMethod = PaymentMethod::create([
+      'name' => $request->name,
+      'logo' => $request->logo,
+      'url'  => $request->url
+    ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PaymentMethod  $paymentMethod
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PaymentMethod $paymentMethod)
-    {
-        //
-    }
+    return new PaymentMethodResource( $paymentMethod );
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PaymentMethod  $paymentMethod
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PaymentMethod $paymentMethod)
-    {
-        //
-    }
+  public function show(PaymentMethod $paymentMethod) {
+    return new PaymentMethodResource( $paymentMethod );
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PaymentMethod  $paymentMethod
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PaymentMethod $paymentMethod)
-    {
-        //
-    }
+  public function edit(PaymentMethod $paymentMethod) {
+    return view('paymentMethods.edit', ['paymentMethod' => $paymentMethod]);
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PaymentMethod  $paymentMethod
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PaymentMethod $paymentMethod)
-    {
-        //
-    }
+  public function update(UpdatePaymentMethod $request, PaymentMethod $paymentMethod) {
+    
+    $paymentMethod->update([
+      'name'        => $request->name,
+      'description' => $request->email,
+      'icon'        => $request->phone_number
+    ]);
+
+    return new PaymentMethodResource( $paymentMethod );
+  }
+
+  public function destroy(PaymentMethod $paymentMethod) {
+    $paymentMethod->delete();
+  }
+  
 }
