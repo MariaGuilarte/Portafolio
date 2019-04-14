@@ -2,7 +2,9 @@
   <div id="vue-app">
     <sidenav :active="false"></sidenav>
     <header></header>
-    <router-view></router-view>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -27,9 +29,6 @@ body {
   font-family: Roboto;
   overflow: hidden;
   transition: all .4s;
-}
-body.sidenav-active {
-  padding-left: 280px;
 }
 #app {
   height: 100vh;
@@ -61,5 +60,4 @@ a {
   color: blue;
   cursor: pointer;
 }
-
 </style>

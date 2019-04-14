@@ -1,23 +1,26 @@
 <template>
   <div id="sidenav">
-    <div class="sidenav-backlayer" :class="{'active':isActive}" @click="toggleSidenav()"></div>
-    <div class="sidenav" :class="{'active':isActive}">
+    <div :class="{'active':isActive, 'sidenav-backlayer':true}" @click="toggleSidenav"></div>
+    <div :class="{'active':isActive, 'sidenav':true}">
       <div class="sidenav-header">
-        <div class="sidenav-logo">HERE GOES THE LOGO</div>
+        <div class="sidenav-logo">PROJECTMAN</div>
         <span class="sidenav-toggler" @click="toggleSidenav()"><i class="material-icons" style="font-size: 1em;">{{ isActive ? 'close' : 'menu' }}</i></span>
       </div>
       <ul class="sidenav-nav">
-        <li>
-          <router-link :to="{ name: 'CreateProject', params: {} }"><i class="material-icons">folder</i> PROYECTOS</router-link>
+        <li @click="toggleSidenav">
+          <router-link :to="{ name: 'CreateProject' }"><i class="material-icons">folder</i> PROYECTOS</router-link>
         </li>
-        <li>
-          <router-link :to="{ name: 'CreateClient', params: {} }"><i class="material-icons">group</i> CLIENTES</a></router-link>
+        <li @click="toggleSidenav">
+          <router-link :to="{ name: 'ListProjects' }"><i class="material-icons">phonelink</i> CREAR PROYECTO</router-link>
         </li>
-        <li>
-          <router-link :to="{ name: 'CreatePaymentMethod', params: {} }"><i class="material-icons">credit_card</i> MÉTODOS DE PAGO</router-link>
+        <li @click="toggleSidenav">
+          <router-link :to="{ name: 'CreateClient' }"><i class="material-icons">group</i> CLIENTES</a></router-link>
         </li>
-        <li>
-          <router-link :to="{ name: 'CreatePlatform', params: {} }"><i class="material-icons">phonelink</i> PLATAFORMAS</router-link>
+        <li @click="toggleSidenav">
+          <router-link :to="{ name: 'CreatePaymentMethod' }"><i class="material-icons">credit_card</i> MÉTODOS DE PAGO</router-link>
+        </li>
+        <li @click="toggleSidenav">
+          <router-link :to="{ name: 'CreatePlatform' }"><i class="material-icons">phonelink</i> PLATAFORMAS</router-link>
         </li>
       </ul>
     </div>
@@ -28,18 +31,20 @@
 export default {
   name: 'Sidenav',
   props:['active'],
+  data(){
+    return {
+      'activeNav':this.active
+    }
+  },
   computed:{
     isActive(){
-      return this.active
+      return this.activeNav
     }
   },
   methods:{
     toggleSidenav(){
-      document.querySelector('.sidenav-backlayer').classList.toggle('active');
-      document.querySelector('.sidenav').classList.toggle('active');
       document.querySelector('body').classList.toggle('sidenav-active');
-
-      this.active = !this.active;
+      this.activeNav = !this.activeNav;
     }
   },
   mounted(){
@@ -51,6 +56,9 @@ export default {
 </script>
 
 <style>
+body {
+  padding-left: 69px;
+}
 .sidenav {
   transition: all .4s;
   display: block;
@@ -117,5 +125,10 @@ export default {
 }
 .sidenav-nav li a .material-icons {
   margin-right: 15px;
+}
+@media(min-width: 992px){
+  body.sidenav-active {
+    padding-left: 280px;
+  }
 }
 </style>

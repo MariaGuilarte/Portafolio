@@ -24,8 +24,9 @@ Route::post('paymentMethods/{paymentMethod}', 'API\PaymentMethodController@updat
 
 Route::resources(
   [
+    'projects'            => 'API\ProjectController',
     'clients'             => 'API\ClientController',
     'platforms'           => 'API\PlatformController',
-    'developmentStatuses' => 'API\DevelopmentStatusesController',
+    'developmentStatuses' => 'API\DevelopmentStatusController',
     'paymentMethods'      => 'API\PaymentMethodController'
   ]);

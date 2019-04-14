@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="CreatePlatform">
+  <div id="CreatePlatform">
     <h1>Registrar plataforma</h1>
     <div class="form-group">
       <label for="name">Nombre</label>

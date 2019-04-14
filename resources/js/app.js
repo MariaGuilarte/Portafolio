@@ -13,6 +13,7 @@ import CreatePaymentMethod from './views/CreatePaymentMethod'
 import CreatePlatform from './views/CreatePlatform'
 import CreateDevelopmentStatus from './views/CreateDevelopmentStatus'
 import CreateProject from './views/CreateProject'
+import ListProjects from './views/ListProjects'
 
 const router = new VueRouter({
   routes:[
@@ -20,6 +21,11 @@ const router = new VueRouter({
       name: 'CreateClient',
       path: '/clients/create',
       component: CreateClient
+    },
+    {
+      name: 'ListProjects',
+      path: '/projects',
+      component: ListProjects
     },
     {
       name: 'CreateProject',
