@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateProjectsTable extends Migration {
-  
+
   public function up() {
     Schema::create('projects', function (Blueprint $table) {
       $table->bigIncrements('id');
@@ -23,6 +23,7 @@ class CreateProjectsTable extends Migration {
       
       $table->unsignedBigInteger('payment_method_id')->nullable();
       $table->foreign('payment_method_id')->references('id')->on('payment_methods');
+
       $table->timestamps();
     });
   }

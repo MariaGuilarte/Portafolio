@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="CreatePlatform">
+  <div id="CreatePlatform">
     <h1>Registrar plataforma</h1>
     <div class="form-group">
       <label for="name">Nombre</label>
@@ -19,8 +19,11 @@
 </template>
 
 <script>
+import FormLock from '../components/FormLock'
+
 export default {
   name: 'CreatePlatform',
+  components: { FormLock },
   data(){
     return {
       // Form content
@@ -35,11 +38,6 @@ export default {
     clearForm(){
       document.querySelectorAll('input, textarea, select').forEach((control)=>{
         control.value = ''
-      })
-    },
-    lockForm(){
-      document.querySelectorAll('input, textarea, select').forEach((control)=>{
-        control.setAttribute('readonly', true)
       })
     },
     storeProject(){

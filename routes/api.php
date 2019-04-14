@@ -25,6 +25,7 @@ Route::post('projects/{project}', 'API\ProjectController@update');
 
 Route::resources(
   [
+    'projects'            => 'API\ProjectController',
     'clients'             => 'API\ClientController',
     'platforms'           => 'API\PlatformController',
     'developmentStatuses' => 'API\DevelopmentStatusController',

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProject extends FormRequest {
-  
+
   public function authorize() {
       return true;
   }
@@ -18,10 +18,9 @@ class StoreProject extends FormRequest {
       'end_date'             => 'nullable|date',
       'budget'               => 'nullable|integer',
       'client_id'             => 'required|integer',
-      'platform_id'           => 'required|integer',
       'development_status_id' => 'required|integer',
       'payment_method_id'     => 'nullable|integer'
     ];
   }
-  
+
 }

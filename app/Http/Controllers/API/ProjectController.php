@@ -10,7 +10,7 @@ use App\Http\Requests\StoreProject;
 use App\Http\Requests\UpdateProject;
 
 class ProjectController extends Controller {
-  
+
   public function index() {
     $projects = Project::all();
     return ProjectResource::collection( $projects );
@@ -21,7 +21,7 @@ class ProjectController extends Controller {
   }
 
   public function store(StoreProject $request) {
-    
+
     $project = Project::create([
       'name'                  => $request->name,
       'description'           => $request->description,
@@ -29,7 +29,6 @@ class ProjectController extends Controller {
       'end_date'              => $request->end_date,
       'budget'                => $request->budget,
       'client_id'             => $request->client_id,
-      'platform_id'           => $request->platform_id,
       'development_status_id' => $request->development_status_id,
       'payment_method_id'     => $request->payment_method_id
     ]);
@@ -46,7 +45,7 @@ class ProjectController extends Controller {
   }
 
   public function update(UpdateProject $request, Project $project) {
-    
+
     $project->update([
       'name'                  => $request->name,
       'description'           => $request->description,
@@ -65,5 +64,5 @@ class ProjectController extends Controller {
   public function destroy(Project $project) {
     $project->delete();
   }
-  
+
 }
