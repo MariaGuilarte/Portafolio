@@ -2,9 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import moment from 'moment'
+import VueMoment from 'vue-moment'
+
+import Toaster from 'v-toaster'
+import 'v-toaster/dist/v-toaster.css'
 
 Vue.use( VueRouter )
 Vue.use( VueAxios, axios )
+Vue.use( Toaster, {timeout: 5000} )
+Vue.use( VueMoment,  moment )
 
 // views
 import App from './components/App'

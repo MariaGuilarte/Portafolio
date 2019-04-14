@@ -19,8 +19,11 @@
 </template>
 
 <script>
+import FormLock from '../components/FormLock'
+
 export default {
   name: 'CreatePlatform',
+  components: { FormLock },
   data(){
     return {
       // Form content
@@ -35,11 +38,6 @@ export default {
     clearForm(){
       document.querySelectorAll('input, textarea, select').forEach((control)=>{
         control.value = ''
-      })
-    },
-    lockForm(){
-      document.querySelectorAll('input, textarea, select').forEach((control)=>{
-        control.setAttribute('readonly', true)
       })
     },
     storeProject(){

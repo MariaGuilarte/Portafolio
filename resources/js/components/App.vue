@@ -2,7 +2,7 @@
   <div id="vue-app">
     <sidenav :active="false"></sidenav>
     <header></header>
-    <div class="container">
+    <div class="container-fluid">
       <router-view></router-view>
     </div>
   </div>

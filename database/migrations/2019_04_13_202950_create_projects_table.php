@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateProjectsTable extends Migration {
-  
+
   public function up() {
     Schema::create('projects', function (Blueprint $table) {
       $table->bigIncrements('id');
@@ -14,11 +14,11 @@ class CreateProjectsTable extends Migration {
       $table->date('start_date');
       $table->date('end_date');
       $table->integer('budget');
-      
-      $table->bigUnsignedInteger('client_id');
-      $table->bigUnsignedInteger('platform_id');
-      $table->bigUnsignedInteger('development_status_id');
-      $table->bigUnsignedInteger('payment_method_id');
+
+      $table->unsignedBigInteger('client_id');
+      // $table->unsignedBigInteger('platform_id');
+      $table->unsignedBigInteger('development_status_id');
+      $table->unsignedBigInteger('payment_method_id');
       $table->timestamps();
     });
   }

@@ -22,8 +22,11 @@
 </template>
 
 <script>
+import FormLock from '../components/FormLock'
+
 export default {
   name: 'CreatePaymentMethod',
+  components: { FormLock },
   data(){
     return {
       name: '',
@@ -35,11 +38,6 @@ export default {
     clearForm(){
       document.querySelectorAll('input, textarea, select').forEach((control)=>{
         control.value = ''
-      })
-    },
-    lockForm(){
-      document.querySelectorAll('input, textarea, select').forEach((control)=>{
-        control.setAttribute('readonly', true)
       })
     },
     storeProject(){
