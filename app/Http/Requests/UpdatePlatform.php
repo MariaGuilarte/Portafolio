@@ -14,7 +14,7 @@ class UpdatePlatform extends FormRequest {
   public function rules()
   {
     return [
-      'name'         => 'required|unique|string|max:191',
+      'name'         => 'required|unique:platforms,name|string|max:191',
       'description'  => 'nullable|string|max:191',
       'icon'         => 'nullable|string|max:191'
     ];

@@ -12,9 +12,9 @@ class StorePaymentMethod extends FormRequest {
 
   public function rules() {
     return [
-      'name' => 'required|unique|string|max:191',
+      'name' => 'required|unique:payment_methods,name|string|max:191',
       'logo' => 'nullable|string|max:191',
-      'url'  => 'required|unique|string|max:191'
+      'url'  => 'required|unique:payment_methods,url|string|max:191'
     ];
   }
   

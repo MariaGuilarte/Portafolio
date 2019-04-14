@@ -13,7 +13,7 @@ class UpdateProject extends FormRequest {
   public function rules() {
     return [
       'name'                 => 'required|string|max:191',
-      'description'          => 'nullable|text|max:300',
+      'description'          => 'nullable|string|max:300',
       'start_date'           => 'required|date',
       'end_date'             => 'required|date',
       'budget'               => 'required|integer',

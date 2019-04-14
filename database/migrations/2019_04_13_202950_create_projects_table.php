@@ -18,8 +18,6 @@ class CreateProjectsTable extends Migration {
       $table->unsignedBigInteger('client_id');
       $table->foreign('client_id')->references('id')->on('clients');
       
-      $table->unsignedBigInteger('platform_id');
-      
       $table->unsignedBigInteger('development_status_id');
       $table->foreign('development_status_id')->references('id')->on('development_statuses');
       

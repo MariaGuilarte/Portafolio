@@ -43,8 +43,8 @@ class PlatformController extends Controller {
     
     $platform->update([
       'name'        => $request->name,
-      'description' => $request->email,
-      'icon'        => $request->phone_number
+      'description' => $request->description,
+      'icon'        => $request->icon
     ]);
 
     return new PlatformResource( $platform );

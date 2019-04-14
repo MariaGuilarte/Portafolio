@@ -27,7 +27,7 @@ Route::resources(
   [
     'clients'             => 'API\ClientController',
     'platforms'           => 'API\PlatformController',
-    'developmentStatuses' => 'API\DevelopmentStatusesController',
+    'developmentStatuses' => 'API\DevelopmentStatusController',
     'paymentMethods'      => 'API\PaymentMethodController',
     'projects'            => 'API\ProjectController'
   ]);
