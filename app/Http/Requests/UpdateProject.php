@@ -13,14 +13,14 @@ class UpdateProject extends FormRequest {
   public function rules() {
     return [
       'name'                 => 'required|string|max:191',
-      'description'          => 'nullable|string|max:300',
+      'description'          => 'required|string|max:300',
       'start_date'           => 'required|date',
-      'end_date'             => 'required|date',
-      'budget'               => 'required|integer',
+      'end_date'             => 'nullable|date',
+      'budget'               => 'nullable|integer',
       'client_id'             => 'required|integer',
       'platform_id'           => 'required|integer',
       'development_status_id' => 'required|integer',
-      'payment_method_id'     => 'required|integer'
+      'payment_method_id'     => 'nullable|integer'
     ];
   }
   
