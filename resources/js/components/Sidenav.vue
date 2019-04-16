@@ -7,14 +7,19 @@
         <span class="sidenav-toggler" @click="toggleSidenav()"><i class="material-icons" style="font-size: 1em;">{{ isActive ? 'close' : 'menu' }}</i></span>
       </div>
       <ul class="sidenav-nav">
-        <li @click="toggleSidenav">
-          <router-link :to="{ name: 'CreateProject' }"><i class="material-icons">folder</i> PROYECTOS</router-link>
+        <li @click="toggleSidenav" class="drop">
+          <a @click:prevent=""><i class="material-icons">folder</i> PROYECTOS</a>
+          <ul>
+            <li><router-link :to="{ name: 'CreateProject' }">Crear proyecto</router-link></li>
+            <li><router-link :to="{ name: 'ListProjects' }">Ver todos</router-link></li>
+          </ul>
         </li>
-        <li @click="toggleSidenav">
-          <router-link :to="{ name: 'ListProjects' }"><i class="material-icons">phonelink</i> CREAR PROYECTO</router-link>
-        </li>
-        <li @click="toggleSidenav">
-          <router-link :to="{ name: 'CreateClient' }"><i class="material-icons">group</i> CLIENTES</a></router-link>
+        <li @click="toggleSidenav" class="drop">
+          <a @click:prevent=""><i class="material-icons">group</i> CLIENTES</a>
+          <ul>
+            <li><router-link :to="{ name: 'CreateClient' }">Registrar cliente</router-link></li>
+            <li><router-link :to="{ name: 'CreateClient' }">Ver todos</a></router-link></li>
+          </ul>
         </li>
         <li @click="toggleSidenav">
           <router-link :to="{ name: 'CreatePaymentMethod' }"><i class="material-icons">credit_card</i> MÉTODOS DE PAGO</router-link>
@@ -112,10 +117,21 @@ body {
   margin: 0;
   padding: 0;
 }
-.sidenav-nav li {
-  border-bottom: 1px solid #dfdfdf;
+.sidenav-nav > li {
+  /* border-bottom: 1px solid #dfdfdf; */
 }
-.sidenav-nav li a {
+.sidenav-nav > .drop ul {
+  /* border-bottom: 1px solid #dfdfdf; */
+  background: rgba(0,0,0,.025);
+  list-style-type: none;
+}
+.sidenav-nav .drop ul li a {
+  /* border-bottom: 1px solid #dfdfdf; */
+  padding: 7px 20px;
+  font-size: .9em;
+}
+
+.sidenav-nav > li a {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
